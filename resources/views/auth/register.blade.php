@@ -3,28 +3,25 @@
 @section('title', 'Register')
 
 @section('content')
-<div class="d-flex justify-content-center align-items-center" style="min-height: 90vh;">
-    <div class="card shadow-lg p-4" style="width: 100%; max-width: 450px; border-radius: 15px;">
-        
-        <!-- Header -->
-        <div class="text-center mb-4">
-            <div class="bg-primary text-white rounded-circle d-inline-flex justify-content-center align-items-center" style="width: 70px; height: 70px;">
-                <i class="bi bi-shop me-1" style="font-size: 2rem;"></i>
+<div class="d-flex justify-content-center align-items-center" style="min-height: 100vh;">
+
+    <!-- Card -->
+    <div class="p-4 text-center shadow-lg" 
+         style="width: 100%; max-width: 420px; border-radius: 20px; background: #fff;">
+
+        <!-- Logo Circle -->
+        <div class="d-flex justify-content-center" style="margin-top: -60px; margin-bottom: 20px;">
+            <div style="width: 100px; height: 100px; border-radius: 50%; background: white; 
+                        display: flex; justify-content: center; align-items: center; 
+                        box-shadow: 0 4px 8px rgba(0,0,0,0.1); overflow: hidden;">
+                <img src="{{ asset('images/logo.png') }}" alt="Logo" 
+                     style="width: 70%; height: 70%; object-fit: contain;">
             </div>
-            <h3 class="mt-3 fw-bold">Buat Akun Baru</h3>
-            <p class="text-muted">Daftar sekarang dan mulai belanja</p>
         </div>
 
-        <!-- Error Validation -->
-        @if ($errors->any())
-            <div class="alert alert-danger">
-                <ul class="mb-0 small">
-                    @foreach ($errors->all() as $error)
-                        <li>{{ $error }}</li>
-                    @endforeach
-                </ul>
-            </div>
-        @endif
+        <!-- Title -->
+        <h3 class="fw-bold mb-1">Register Account</h3>
+        <p class="text-muted mb-4">Buat akun baru sekarang</p>
 
         <!-- Form -->
         <form method="POST" action="{{ route('register') }}">
@@ -32,49 +29,60 @@
 
             <!-- Name -->
             <div class="mb-3">
-                <label for="name" class="form-label fw-semibold">Nama</label>
                 <div class="input-group">
                     <span class="input-group-text bg-light"><i class="bi bi-person"></i></span>
-                    <input type="text" name="name" class="form-control" id="name" placeholder="Nama lengkap" value="{{ old('name') }}" required>
+                    <input type="text" name="name" class="form-control" placeholder="Your Name" 
+                           value="{{ old('name') }}" required>
+                </div>
+            </div>
+
+            <!-- Username -->
+            <div class="mb-3">
+                <div class="input-group">
+                    <span class="input-group-text bg-light"><i class="bi bi-person-badge"></i></span>
+                    <input type="text" name="username" class="form-control" placeholder="Username" 
+                           value="{{ old('username') }}" required>
                 </div>
             </div>
 
             <!-- Email -->
             <div class="mb-3">
-                <label for="email" class="form-label fw-semibold">Email</label>
                 <div class="input-group">
                     <span class="input-group-text bg-light"><i class="bi bi-envelope"></i></span>
-                    <input type="email" name="email" class="form-control" id="email" placeholder="contoh@email.com" value="{{ old('email') }}" required>
+                    <input type="email" name="email" class="form-control" placeholder="Your Email" 
+                           value="{{ old('email') }}" required>
                 </div>
             </div>
 
             <!-- Password -->
             <div class="mb-3">
-                <label for="password" class="form-label fw-semibold">Password</label>
                 <div class="input-group">
                     <span class="input-group-text bg-light"><i class="bi bi-lock"></i></span>
-                    <input type="password" name="password" class="form-control" id="password" placeholder="••••••••" required>
+                    <input type="password" name="password" class="form-control" placeholder="Password" required>
                 </div>
             </div>
 
             <!-- Confirm Password -->
             <div class="mb-3">
-                <label for="password_confirmation" class="form-label fw-semibold">Konfirmasi Password</label>
                 <div class="input-group">
                     <span class="input-group-text bg-light"><i class="bi bi-shield-lock"></i></span>
-                    <input type="password" name="password_confirmation" class="form-control" id="password_confirmation" placeholder="Ulangi password" required>
+                    <input type="password" name="password_confirmation" class="form-control" placeholder="Confirm Password" required>
                 </div>
             </div>
 
-            <!-- Submit Button -->
-            <button type="submit" class="btn btn-primary w-100 py-2 fw-semibold">
-                <i class="bi bi-check-circle me-1"></i> Daftar
+            <!-- Submit -->
+            <button type="submit" 
+                    class="btn w-100 py-2 fw-semibold text-white" 
+                    style="background-color:#D6A99D; border-radius: 25px;">
+                Register
             </button>
 
             <!-- Login Link -->
             <div class="text-center mt-3">
-                <small class="text-muted">Sudah punya akun?</small>
-                <a href="{{ route('login') }}" class="fw-semibold text-decoration-none">Yo login sekarang</a>
+                <small class="text-muted">Already have an account?</small>
+                <a href="{{ route('login') }}" class="fw-bold" style="color: #D6A99D; text-decoration: none;">
+                    Sign up
+                </a>
             </div>
         </form>
     </div>
