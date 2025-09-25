@@ -6,8 +6,7 @@
 <div class="container mt-5">
    <h2 class="fw-bold mb-4" style="color: black;">
     <i class="bi bi-basket3-fill"></i> Daftar Pembelian
-</h2>
-
+   </h2>
 
     {{-- Pesan sukses --}}
     @if (session('success'))
@@ -40,21 +39,26 @@
                             </thead>
                             <tbody>
                                 @foreach ($purchases as $index => $purchase)
+                                    @php
+                                        $harga = $purchase->produk->harga ?? 0;
+                                        $total = $harga * $purchase->quantity;
+                                    @endphp
                                     <tr style="background-color: white; box-shadow: 0 2px 6px rgba(0,0,0,0.05); border-radius: 12px; margin-bottom: 8px;">
                                         <td class="fw-semibold">{{ $index + 1 }}</td>
-                                        <td>{{ $purchase->produk->nama }}</td>
-                                        <td>Rp{{ number_format($purchase->produk->harga, 0, ',', '.') }}</td>
+                                        <td>{{ $purchase->produk->nama ?? 'Produk tidak ditemukan' }}</td>
+                                        <td>Rp{{ number_format($harga, 0, ',', '.') }}</td>
                                         <td>{{ $purchase->quantity }}</td>
                                         <td class="fw-bold text-success">
-                                            Rp{{ number_format($purchase->produk->harga * $purchase->quantity, 0, ',', '.') }}
+                                            Rp{{ number_format($total, 0, ',', '.') }}
                                         </td>
-                                        <td>{{ $purchase->created_at->format('d M Y - H:i:s ') }}</td>
+                                        <td>{{ $purchase->created_at->format('d M Y - H:i:s') }}</td>
                                     </tr>
                                 @endforeach
                             </tbody>
                         </table>
                     </div>
                 </div>
+              </div>
             </div>
         </div>
     @endif

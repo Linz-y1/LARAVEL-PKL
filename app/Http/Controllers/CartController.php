@@ -21,7 +21,7 @@ class CartController extends Controller
     {
         $produk = Produk::findOrFail($id);
 
-        // Optional: validasi stok minimum 1
+        // Optional: validasi stok minimum 1    
         if ($produk->stok < 1) {
             return back()->with('error', 'Stok produk habis.');
         }

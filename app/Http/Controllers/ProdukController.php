@@ -112,13 +112,18 @@ class ProdukController extends Controller
         return redirect()->route('produk.index')->with('success', 'Pembelian berhasil! Terima kasih telah berbelanja.');
     }
 
-    public function myPurchases()
+  public function myPurchases()
     {
+        // kalau belum login, redirect ke login
+        if (!Auth::check()) {
+            return redirect()->route('login')->with('error', 'Silakan login dulu');
+        }
+
         $purchases = Purchase::with('produk')
-            ->where('user_id', auth()->id())
+            ->where('user_id', Auth::id())
             ->latest()
             ->get();
 
         return view('purchase.purchases', compact('purchases'));
     }
-}
+}   

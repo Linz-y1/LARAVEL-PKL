@@ -68,7 +68,8 @@ c
                                 <div class="d-flex justify-content-between mb-3">
                                     <!-- Harga -->
                                     <span class="badge bg-success fs-6">
-                                        Rp {{ number_format($p->harga, 3, ',', '.') }}
+                                        Rp {{ number_format($p->harga, 0, ',', '.') }}
+
                                     </span>
 
                                     <!-- Stok -->

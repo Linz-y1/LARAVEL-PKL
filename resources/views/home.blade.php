@@ -1,4 +1,4 @@
-<!-- @extends('app')
+@extends('app')
 
 @section('title', 'Beranda')
 
@@ -25,11 +25,9 @@
     
     content: "🐾 🐾 🐾 🐾 🐾 🐾 🐾 🐾";
     position: absolute;
-    top: 0;
-    right: -50%;
-    left: -50%;
-    width: 200%;
-    height: 100%;
+    top: 40%;
+   left: auto;
+    right: auto;
     font-size: 5rem;
     color: rgba(255, 183, 77, 0.15);
     display: flex;
@@ -40,8 +38,6 @@
     z-index: 0;
     animation: movePaws 30s linear infinite;
 }
-
-/* Animasi paw bergerak */
 
 
 /* Judul utama */
@@ -55,11 +51,7 @@
     z-index: 1;
 }
 
-.home-title:hover {
-    transform: scale(1.05);
-}
-
 
 
 </style>
-@endsection -->
+@endsection 

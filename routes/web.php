@@ -22,6 +22,7 @@ Route::get('/produk/{id}/buy', [ProdukController::class, 'showBuyForm'])->name('
 Route::post('/produk/{id}/buy', [ProdukController::class, 'processPurchase'])->name('produk.purchase');
 Route::get('/my-purchases', [ProdukController::class, 'myPurchases'])->middleware('auth')->name('purchase.purchases');
 
+
 // Keranjang
 Route::get('/cart', [CartController::class, 'index'])->name('cart.index');
 Route::post('/cart/add/{id}', [CartController::class, 'add'])->name('cart.add');
