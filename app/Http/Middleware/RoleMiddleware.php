@@ -1,6 +1,7 @@
 <?php
 
 namespace App\Http\Middleware;
+use Illuminate\Support\Facades\Auth;
 
 use Closure;
 use Illuminate\Http\Request;
@@ -15,9 +16,10 @@ class RoleMiddleware
      */
     public function handle($request, Closure $next, ...$roles)
     {
-   if (!auth()->check() || !in_array(auth()->user()->role, $roles)) {
-        abort(403);
-    }
+   if (!Auth::check() || !in_array(Auth::user()->role, $roles)) {
+    abort(403);
+}
+
     return $next($request);
     }
 }
