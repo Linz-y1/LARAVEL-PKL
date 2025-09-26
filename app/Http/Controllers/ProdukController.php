@@ -59,14 +59,13 @@ class ProdukController extends Controller
 
         $data = $request->only(['nama', 'harga', 'stok', 'deskripsi', 'gambar']);
 
-        // Jika ada file gambar baru
+      
         if ($request->hasFile('gambar')) {
-            // Hapus gambar lama
+  
             if ($produk->gambar && Storage::disk('public')->exists($produk->gambar)) {
                 Storage::disk('public')->delete($produk->gambar);
             }
-
-            // Upload baru
+            
             $path = $request->file('gambar')->store('produk', 'public');
             $data['gambar'] = $path;
         }

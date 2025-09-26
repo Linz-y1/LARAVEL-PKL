@@ -1,7 +1,7 @@
     {{-- resources/views/produk/index.blade.php --}}
     @extends('app')
 
-    @section('title', 'Daftar Bunga')
+    @section('title', 'produk')
 
     @section('content')
         <div class="container mt-10 mb-5">
@@ -102,7 +102,7 @@ c
                                             <a href="{{ route('produk.buy', $p->id) }}"
                                                 class="btn btn-beli w-100 {{ $p->stok == 0 ? 'disabled' : '' }}"
                                                 style="background-color: rgba(176,113,84,1); color: white; border: none;">
-                                                <i class="bi bi-cart-plus"></i> Beli
+                                               <ion-icon name="cart-outline"></ion-icon> Beli
                                             </a>
                                             @endif
                                         @endauth
@@ -114,7 +114,8 @@ c
                 </div>
             @endif
         </div>
-
+<script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
+<script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
         {{-- Style tambahan --}}
         <style>
             .produk-card {

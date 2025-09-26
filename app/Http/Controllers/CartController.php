@@ -31,7 +31,7 @@ class CartController extends Controller
         if (isset($cart[$id])) {
             // tambah qty 1 (atau pakai input jumlah kalau disediakan)
             $cart[$id]['qty'] += 1;
-        } else {
+        } else {    
             $cart[$id] = [
                 'nama'  => $produk->nama,
                 'harga' => $produk->harga,
