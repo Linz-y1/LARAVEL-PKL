@@ -69,7 +69,6 @@ c
                                     <!-- Harga -->
                                     <span class="badge bg-success fs-6">
                                         Rp {{ number_format($p->harga, 0, ',', '.') }}
-
                                     </span>
 
                                     <!-- Stok -->
@@ -102,7 +101,7 @@ c
                                             <a href="{{ route('produk.buy', $p->id) }}"
                                                 class="btn btn-beli w-100 {{ $p->stok == 0 ? 'disabled' : '' }}"
                                                 style="background-color: rgba(176,113,84,1); color: white; border: none;">
-                                               <ion-icon name="cart-outline"></ion-icon> Beli
+                                                <i class="bi bi-cart-plus"></i> 
                                             </a>
                                             @endif
                                         @endauth
@@ -114,8 +113,7 @@ c
                 </div>
             @endif
         </div>
-<script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
-<script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
+
         {{-- Style tambahan --}}
         <style>
             .produk-card {
