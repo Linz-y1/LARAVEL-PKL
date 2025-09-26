@@ -19,11 +19,19 @@
       <div class="card-body d-flex justify-content-between align-items-center">
         <div>
           <h5 class="fw-bold mb-1" style="color:#5C4033;">{{ $item['nama'] }}</h5>
-          <p class="mb-0 text-muted">Qty: <span class="fw-semibold">{{ $item['qty'] }}</span></p>
-          <p class="mb-0 text-success fw-bold">Rp{{ number_format($item['harga'] * $item['qty'],0,',','.') }}</p>
+          
+          {{-- Qty tampil lebih cantik --}}
+          <p class="mb-1 text-muted">
+            Qty: <span class="badge bg-secondary px-2">{{ $item['qty'] }}</span>
+          </p>
+
+          {{-- Harga per item total --}}
+          <p class="mb-0 text-success fw-bold">
+            Rp{{ number_format($item['harga'] * $item['qty'],0,',','.') }}
+          </p>
         </div>
 
-        {{-- Hapus --}}
+        {{-- Tombol Hapus --}}
         <form action="{{ route('cart.remove', $id) }}" method="POST" class="ms-3">
           @csrf
           @method('DELETE')
@@ -81,6 +89,9 @@ h5 {
   transform: translateY(-3px);
   box-shadow: 0 8px 20px rgba(176,113,84,0.3);
   transition: all 0.3s ease;
+}
+.badge {
+  font-size: 0.9rem;
 }
 </style>
 @endsection
